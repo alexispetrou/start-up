@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prime Properties | Your Dream Home Awaits</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/properties.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -33,178 +33,107 @@
             <ul class="nav-links">
                 <li><a href="homepage.html">Αρχική</a></li>
                 <li><a href="properties.html">Ακίνητα</a></li>
-                <li><a href="about.html">Πληροφρίες για εμάς</a></li>
-                <li><a href="contact.html">Επικοινωνία</a></li>
-                <li><a href="login.html" class="cta-button">Login</a></li>
+                <li><a href="#">Πληροφρίες για εμάς</a></li>
+                <li><a href="#">Επικοινωνία</a></li>
+                <li><a href="#" class="cta-button">Login</a></li>
             </ul>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Έλα μαζί να βρούμε το σπίτι των ονείρων σου</h1>
-            <div class="questionnaire">
-                <div class="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div id="question-container" class="question-container">
-                    <!-- Questions will be inserted here by JavaScript -->
-                </div>
-                <div id="result-container" class="hidden">
-                    <h3>Ευχαριστούμε για τις απαντήσεις σου!</h3>
-                    <p id="result-message"></p>
-                    <button id="restart-btn" class="answer-btn">Ξεκίνα πάλι</button>
-                </div>
+    <nav class="main-content">
+        <h1>Μερικά Ακίνητα</h1>
+        <nav class="properties-boxes">
+
+        </nav>
+    </nav>
+
+    <script>
+        const properties=[
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m3.spitogatos.gr/317741837_300x220.jpg?v=20130730",
+                price:"600$",
+                size:65,
+                year:2006
+            },
+            { 
+                title:"Διαμέρισμα στο Μικρολίμανο",
+                image_link:"https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730",
+                price:"400$",
+                size:45,
+                year:2002
+            },
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m2.spitogatos.gr/311467849_300x220.jpg?v=20130730",
+                price:"700$",
+                size:62,
+                year:2016
+            },
+            { 
+                title:"Διαμέρισμα στα Μανιάτικα",
+                image_link:"https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730",
+                price:"500$",
+                size:55,
+                year:2010
+            },
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m2.spitogatos.gr/317826253_900x675.jpg?v=20130730",
+                price:"360$",
+                size:35,
+                year:1997
+            },
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m3.spitogatos.gr/317821754_900x675.jpg?v=20130730",
+                price:"900$",
+                size:75,
+                year:2017
+            },
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m2.spitogatos.gr/318495127_300x220.jpg?v=20130730",
+                price:"560$",
+                size:65,
+                year:1997
+            },
+            { 
+                title:"Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link:"https://m2.spitogatos.gr/317238883_300x220.jpg?v=20130730",
+                price:"1000$",
+                size:95,
+                year:2017
+            }
+        ]
+
+
+    const container = document.querySelector('.properties-boxes');
+
+    properties.forEach(property => {
+        const card = document.createElement('div');
+        card.classList.add('property-card');
+        card.innerHTML = `
+            <h3>${property.title}</h3>
+            <img src="${property.image_link}" alt="${property.title}" />
+            <p>Τιμή: ${property.price}</p>
+            <p>Μέγεθος: ${property.size} τ.μ.</p>
+            <p>Έτος κατασκευής: ${property.year}</p>
+            <div class="card-actions">
+                <button class="info-btn">Δες πληροφορίες</button>
+                <i class="fas fa-heart favorite-icon"></i>
             </div>
-            
-        </div>
-    </section>
-    
-    <!-- Rest of your website content would go here -->
-    
-   <script>
-        // Questions data
-        const questions = [
-            {
-                question: "Σε ενδιαφέρει να νοικιάσεις ή να αγοράσεις;",
-                answers: ["Νοικιάζω", "Αγοράζω"],
-                followUp: null
-            },
-            {
-                question: "Σε ποία περιοχή θες να ψάξουμε;",
-                answers: ["Δημοτικό θέατρο", "Μικρολίμανο", "Δεν με νοιάζει"],
-                followUp: null
-            },
-            {
-                question: "Είσαι φοιτητής;",
-                answers: ["Ναι", "Όχι"],
-                followUp: [
-                    {
-                        question: "Σε ποιό πανεπιστήμιο θες να είσαι κοντά;",
-                        answers: ["ΕΚΠΑ", "ΠΑΠΕΙ", "ΟΠΑ","ΕΜΠ", "Άλλο"]
-                    },
-                    {
-                        question: "Θες να πηγαίνεις με τα πόδια;",
-                        answers: ["Ναι", "Όχι"]
-                    },
-                    {
-                        question: "Θες να χρησιμοποιείς ΜΜΜ;",
-                        answers: ["Ναι", "Όχι"]
-                    }
-                ]
-            }
-        ];
+        `;
+        container.appendChild(card);
+    });
 
-        // DOM elements
-        const questionContainer = document.getElementById('question-container');
-        const resultContainer = document.getElementById('result-container');
-        const resultMessage = document.getElementById('result-message');
-        const restartBtn = document.getElementById('restart-btn');
-        const progressBar = document.getElementById('progress');
 
-        // State variables
-        let currentQuestionIndex = 0;
-        let currentFollowUpIndex = 0;
-        let answers = [];
-        let isInFollowUp = false;
-        let followUpQuestions = [];
-
-        // Initialize the questionnaire
-        function initQuestionnaire() {
-            showQuestion(questions[currentQuestionIndex]);
+     document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('favorite-icon')) {
+            e.target.classList.toggle('active');
         }
-
-        // Show a question
-        function showQuestion(questionObj) {
-            // Update progress bar
-            const totalQuestions = questions.length + (questionObj.followUp ? questionObj.followUp.length : 0);
-            const answeredQuestions = answers.length;
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            progressBar.style.width = `${progress}%`;
-            
-            // Create question HTML
-            questionContainer.innerHTML = `
-                <div class="question">${questionObj.question}</div>
-                <div class="answer-options" id="answer-options">
-                    ${questionObj.answers.map(answer => 
-                        `<button class="answer-btn" onclick="handleAnswer('${answer}')">${answer}</button>`
-                    ).join('')}
-                </div>
-            `;
-        }
-
-        // Handle user answer
-        function handleAnswer(answer) {
-            answers.push({
-                question: isInFollowUp ? followUpQuestions[currentFollowUpIndex].question : questions[currentQuestionIndex].question,
-                answer: answer
-            });
-
-            // Check if we need to show follow-up questions
-            if (!isInFollowUp && questions[currentQuestionIndex].followUp && answer === "Ναι") {
-                isInFollowUp = true;
-                followUpQuestions = questions[currentQuestionIndex].followUp;
-                currentFollowUpIndex = 0;
-                showQuestion(followUpQuestions[currentFollowUpIndex]);
-                return;
-            }
-
-            // Move to next question
-            if (isInFollowUp) {
-                currentFollowUpIndex++;
-                if (currentFollowUpIndex < followUpQuestions.length) {
-                    showQuestion(followUpQuestions[currentFollowUpIndex]);
-                    return;
-                } else {
-                    isInFollowUp = false;
-                    currentQuestionIndex++;
-                }
-            } else {
-                currentQuestionIndex++;
-            }
-
-            // Check if we've completed all questions
-            if (currentQuestionIndex < questions.length) {
-                showQuestion(questions[currentQuestionIndex]);
-            } else {
-                showResults();
-            }
-        }
-
-        // Show results
-        function showResults() {
-            questionContainer.classList.add('hidden');
-            resultContainer.classList.remove('hidden');
-            
-            // Create a summary of answers
-            let summary = "<ul>";
-            answers.forEach(item => {
-                summary += `<li><strong>${item.question}</strong>: ${item.answer}</li>`;
-            });
-            summary += "</ul>";
-            
-            resultMessage.innerHTML = `Οι απαντήσεις σου: ${summary}`;
-            progressBar.style.width = '100%';
-        }
-
-        // Restart questionnaire
-        restartBtn.addEventListener('click', () => {
-            currentQuestionIndex = 0;
-            currentFollowUpIndex = 0;
-            answers = [];
-            isInFollowUp = false;
-            followUpQuestions = [];
-            
-            questionContainer.classList.remove('hidden');
-            resultContainer.classList.add('hidden');
-            progressBar.style.width = '0%';
-            
-            initQuestionnaire();
-        });
-
-        // Start the questionnaire
-        initQuestionnaire();
+    });
     </script>
+    
+    
 </body>
 </html>
