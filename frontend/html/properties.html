@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Properties | Your Dream Home Awaits</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Top Panel -->
+    <div class="top-panel">
+        <div class="top-panel-container">
+            <div class="contact-info">
+                <a href="tel:+1234567890"><i class="fas fa-phone"></i> 6949363655</a>
+                <a href="mailto:info@primeproperties.com"><i class="fas fa-envelope"></i> alexisptr204@gmail.com</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Karaoli ke Dimitriou 80, Pireas 185 34</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">My<span>Home</span></a>
+            <ul class="nav-links">
+                <li><a href="homepage.html">Αρχική</a></li>
+                <li><a href="properties.html">Ακίνητα</a></li>
+                <li><a href="about.html">Πληροφρίες για εμάς</a></li>
+                <li><a href="contact.html">Επικοινωνία</a></li>
+                <li><a href="login.html" class="cta-button">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Έλα μαζί να βρούμε το σπίτι των ονείρων σου</h1>
+            <div class="questionnaire">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div id="question-container" class="question-container">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+                <div id="result-container" class="hidden">
+                    <h3>Ευχαριστούμε για τις απαντήσεις σου!</h3>
+                    <p id="result-message"></p>
+                    <button id="restart-btn" class="answer-btn">Ξεκίνα πάλι</button>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- Rest of your website content would go here -->
+    
+   <script>
+        // Questions data
+        const questions = [
+            {
+                question: "Σε ενδιαφέρει να νοικιάσεις ή να αγοράσεις;",
+                answers: ["Νοικιάζω", "Αγοράζω"],
+                followUp: null
+            },
+            {
+                question: "Σε ποία περιοχή θες να ψάξουμε;",
+                answers: ["Δημοτικό θέατρο", "Μικρολίμανο", "Δεν με νοιάζει"],
+                followUp: null
+            },
+            {
+                question: "Είσαι φοιτητής;",
+                answers: ["Ναι", "Όχι"],
+                followUp: [
+                    {
+                        question: "Σε ποιό πανεπιστήμιο θες να είσαι κοντά;",
+                        answers: ["ΕΚΠΑ", "ΠΑΠΕΙ", "ΟΠΑ","ΕΜΠ", "Άλλο"]
+                    },
+                    {
+                        question: "Θες να πηγαίνεις με τα πόδια;",
+                        answers: ["Ναι", "Όχι"]
+                    },
+                    {
+                        question: "Θες να χρησιμοποιείς ΜΜΜ;",
+                        answers: ["Ναι", "Όχι"]
+                    }
+                ]
+            }
+        ];
+
+        // DOM elements
+        const questionContainer = document.getElementById('question-container');
+        const resultContainer = document.getElementById('result-container');
+        const resultMessage = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const progressBar = document.getElementById('progress');
+
+        // State variables
+        let currentQuestionIndex = 0;
+        let currentFollowUpIndex = 0;
+        let answers = [];
+        let isInFollowUp = false;
+        let followUpQuestions = [];
+
+        // Initialize the questionnaire
+        function initQuestionnaire() {
+            showQuestion(questions[currentQuestionIndex]);
+        }
+
+        // Show a question
+        function showQuestion(questionObj) {
+            // Update progress bar
+            const totalQuestions = questions.length + (questionObj.followUp ? questionObj.followUp.length : 0);
+            const answeredQuestions = answers.length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            // Create question HTML
+            questionContainer.innerHTML = `
+                <div class="question">${questionObj.question}</div>
+                <div class="answer-options" id="answer-options">
+                    ${questionObj.answers.map(answer => 
+                        `<button class="answer-btn" onclick="handleAnswer('${answer}')">${answer}</button>`
+                    ).join('')}
+                </div>
+            `;
+        }
+
+        // Handle user answer
+        function handleAnswer(answer) {
+            answers.push({
+                question: isInFollowUp ? followUpQuestions[currentFollowUpIndex].question : questions[currentQuestionIndex].question,
+                answer: answer
+            });
+
+            // Check if we need to show follow-up questions
+            if (!isInFollowUp && questions[currentQuestionIndex].followUp && answer === "Ναι") {
+                isInFollowUp = true;
+                followUpQuestions = questions[currentQuestionIndex].followUp;
+                currentFollowUpIndex = 0;
+                showQuestion(followUpQuestions[currentFollowUpIndex]);
+                return;
+            }
+
+            // Move to next question
+            if (isInFollowUp) {
+                currentFollowUpIndex++;
+                if (currentFollowUpIndex < followUpQuestions.length) {
+                    showQuestion(followUpQuestions[currentFollowUpIndex]);
+                    return;
+                } else {
+                    isInFollowUp = false;
+                    currentQuestionIndex++;
+                }
+            } else {
+                currentQuestionIndex++;
+            }
+
+            // Check if we've completed all questions
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+            } else {
+                showResults();
+            }
+        }
+
+        // Show results
+        function showResults() {
+            questionContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            // Create a summary of answers
+            let summary = "<ul>";
+            answers.forEach(item => {
+                summary += `<li><strong>${item.question}</strong>: ${item.answer}</li>`;
+            });
+            summary += "</ul>";
+            
+            resultMessage.innerHTML = `Οι απαντήσεις σου: ${summary}`;
+            progressBar.style.width = '100%';
+        }
+
+        // Restart questionnaire
+        restartBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            currentFollowUpIndex = 0;
+            answers = [];
+            isInFollowUp = false;
+            followUpQuestions = [];
+            
+            questionContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            progressBar.style.width = '0%';
+            
+            initQuestionnaire();
+        });
+
+        // Start the questionnaire
+        initQuestionnaire();
+    </script>
+</body>
+</html>
