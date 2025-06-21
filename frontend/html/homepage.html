@@ -3,47 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Properties | Your Dream Home Awaits</title>
+    <meta name="description" content="Prime Properties - Βρείτε το ιδανικό σας σπίτι. Επαγγελματική μεσιτική για αγορά, πώληση και ενοικίαση ακινήτων.">
+    <title>Prime Properties | Το Σπίτι των Ονείρων Σας</title>
     <link rel="stylesheet" href="../css/homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Top Panel -->
-    <div class="top-panel">
+    <header class="top-panel" role="banner">
         <div class="top-panel-container">
-            <div class="contact-info">
-                <a href="tel:+1234567890"><i class="fas fa-phone"></i> 6949363655</a>
-                <a href="mailto:info@primeproperties.com"><i class="fas fa-envelope"></i> alexisptr204@gmail.com</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Karaoli ke Dimitriou 80, Pireas 185 34</a>
+            <div class="contact-info" aria-label="Στοιχεία επικοινωνίας">
+                <a href="tel:+306949363655" aria-label="Τηλεφωνήστε μας"><i class="fas fa-phone" aria-hidden="true"></i> 6949363655</a>
+                <a href="mailto:alexisptr204@gmail.com" aria-label="Στείλτε μας email"><i class="fas fa-envelope" aria-hidden="true"></i> alexisptr204@gmail.com</a>
+                <a href="https://maps.google.com/?q=Karaoli ke Dimitriou 80, Pireas 185 34" target="_blank" rel="noopener" aria-label="Δείτε τη τοποθεσία μας στον χάρτη"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Karaoli ke Dimitriou 80, Pireas 185 34</a>
             </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="social-links" aria-label="Κοινωνικά δίκτυα">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
             </div>
         </div>
-    </div>
+    </header>
     
     <!-- Main Navigation -->
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="Κύρια πλοήγηση">
         <div class="nav-container">
-            <a href="index.html" class="logo">My<span>Home</span></a>
+            <a href="index.html" class="logo" aria-label="Αρχική σελίδα">My<span>Home</span></a>
             <ul class="nav-links">
                 <li><a href="homepage.html">Αρχική</a></li>
                 <li><a href="properties.html">Ακίνητα</a></li>
-                <li><a href="#">Πληροφρίες για εμάς</a></li>
+                <li><a href="#">Σχετικά με εμάς</a></li>
                 <li><a href="#">Επικοινωνία</a></li>
-                <li><a href="#" class="cta-button">Login</a></li>
+                <li><a href="#" class="cta-button">Σύνδεση</a></li>
             </ul>
+            <button class="mobile-menu-button" aria-label="Μενού" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" role="region" aria-labelledby="hero-heading">
         <div class="hero-content">
-            <h1>Έλα μαζί να βρούμε το σπίτι των ονείρων σου</h1>
+            <h1 id="hero-heading">Βρείτε το σπίτι των ονείρων σας</h1>
+            <p class="hero-subtitle">Ειδικευόμαστε στην εύρεση του τέλειου σπιτιού για κάθε ανάγκη και προϋπολογισμό</p>
+            
             <div class="questionnaire">
                 <div class="progress-bar">
                     <div class="progress" id="progress"></div>
@@ -54,45 +62,194 @@
                 <div id="result-container" class="hidden">
                     <h3>Ευχαριστούμε για τις απαντήσεις σου!</h3>
                     <p id="result-message"></p>
-                    <button id="restart-btn" class="answer-btn">Ξεκίνα πάλι</button>
+                    <div class="result-actions">
+                        <button id="view-properties" class="answer-btn">
+                            <i class="fas fa-search"></i> Δες τα ακίνητα
+                        </button>
+                        <button id="restart-btn" class="answer-btn outline">
+                            <i class="fas fa-redo"></i> Ξεκίνα πάλι
+                        </button>
+                    </div>
                 </div>
             </div>
-            
         </div>
     </section>
     
-    <!-- Rest of your website content would go here -->
+    <!-- Features Section -->
+    <section class="features-section" aria-labelledby="features-heading">
+        <div class="container">
+            <h2 id="features-heading" class="section-title">Γιατί να επιλέξετε εμάς;</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Ευρεία Ποικιλία</h3>
+                    <p>Εκατοντάδες ακίνητα σε όλο τον Πειραιά και γύρω περιοχές</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Καλύτερες Τιμές</h3>
+                    <p>Διαπραγματευόμαστε τις καλύτερες τιμές για εσάς</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Επαγγελματική Συμβουλή</h3>
+                    <p>Εμπειρογνώμονες με 20+ χρόνια εμπειρίας</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
-   <script>
+    <!-- Featured Properties -->
+    <section class="featured-properties" aria-labelledby="featured-heading">
+        <div class="container">
+            <h2 id="featured-heading" class="section-title">Προτεινόμενα Ακίνητα</h2>
+            <div class="properties-grid" id="featured-properties-container">
+                <!-- Featured properties will be loaded by JavaScript -->
+            </div>
+            <div class="section-footer">
+                <a href="properties.html" class="view-all-btn">Δείτε όλα τα ακίνητα <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+            <h2 id="testimonials-heading" class="section-title">Τι Λένε Οι Πελάτες Μας</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Βρήκα το ιδανικό διαμέρισμα για τις σπουδές μου μέσα σε λίγες μέρες!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-name">Μαρία Κ.</div>
+                        <div class="author-title">Φοιτήτρια</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Επαγγελματική και γρήγορη εξυπηρέτηση. Το συνιστώ ανεπιφύλακτα!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-name">Γιάννης Π.</div>
+                        <div class="author-title">Επιχειρηματίας</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+        <div class="container">
+            <h2 id="cta-heading">Ετοιμοι να ξεκινήσετε την αναζήτηση;</h2>
+            <p>Επικοινωνήστε μαζί μας σήμερα για να σας βοηθήσουμε να βρείτε το ιδανικό σας σπίτι</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button primary"><i class="fas fa-envelope"></i> Επικοινωνία</a>
+                <a href="tel:+306949363655" class="cta-button secondary"><i class="fas fa-phone"></i> Κλήση</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>MyHome</h3>
+                <p>Βρείτε το ιδανικό σας σπίτι με την βοήθεια των ειδικών μας.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Γρήγοροι Σύνδεσμοι</h3>
+                <ul>
+                    <li><a href="homepage.html">Αρχική</a></li>
+                    <li><a href="properties.html">Ακίνητα</a></li>
+                    <li><a href="about.html">Σχετικά με εμάς</a></li>
+                    <li><a href="contact.html">Επικοινωνία</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Επικοινωνία</h3>
+                <address>
+                    Karaoli ke Dimitriou 80<br>
+                    Pireas 185 34<br>
+                    <a href="tel:+306949363655">6949363655</a><br>
+                    <a href="mailto:alexisptr204@gmail.com">alexisptr204@gmail.com</a>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyHome. Όλα τα δικαιώματα διατηρούνται.</p>
+        </div>
+    </footer>
+
+    <script>
         // Questions data
         const questions = [
             {
-                question: "Σε ενδιαφέρει να νοικιάσεις ή να αγοράσεις;",
+                question: "Σας ενδιαφέρει να νοικιάσετε ή να αγοράσετε;",
                 answers: ["Νοικιάζω", "Αγοράζω"],
                 followUp: null
             },
             {
-                question: "Σε ποία περιοχή θες να ψάξουμε;",
-                answers: ["Δημοτικό θέατρο", "Μικρολίμανο", "Δεν με νοιάζει"],
+                question: "Σε ποια περιοχή θα θέλατε να αναζητήσουμε;",
+                answers: ["Δημοτικό Θέατρο", "Μικρολίμανο", "Μανιάτικα", "Άλλη περιοχή"],
                 followUp: null
             },
             {
-                question: "Είσαι φοιτητής;",
+                question: "Είστε φοιτητής/τρια;",
                 answers: ["Ναι", "Όχι"],
                 followUp: [
                     {
-                        question: "Σε ποιό πανεπιστήμιο θες να είσαι κοντά;",
-                        answers: ["ΕΚΠΑ", "ΠΑΠΕΙ", "ΟΠΑ","ΕΜΠ", "Άλλο"]
+                        question: "Σε ποιο πανεπιστήμιο θα θέλατε να είστε κοντά;",
+                        answers: ["ΕΚΠΑ", "ΠΑΠΕΙ", "ΟΠΑ", "ΕΜΠ", "Άλλο"]
                     },
                     {
-                        question: "Θες να πηγαίνεις με τα πόδια;",
-                        answers: ["Ναι", "Όχι"]
-                    },
-                    {
-                        question: "Θες να χρησιμοποιείς ΜΜΜ;",
+                        question: "Θα προτιμούσατε να μετακινείστε με τα πόδια;",
                         answers: ["Ναι", "Όχι"]
                     }
                 ]
+            },
+            {
+                question: "Τι μέγεθος ακινήτου ψάχνετε;",
+                answers: ["Στούντιο", "1-2 υπνοδωμάτια", "3+ υπνοδωμάτια"],
+                followUp: null
+            }
+        ];
+
+        // Featured properties data
+        const featuredProperties = [
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m3.spitogatos.gr/317741837_300x220.jpg?v=20130730",
+                price: "600",
+                size: 65,
+                year: 2006,
+                bedrooms: 2,
+                bathrooms: 1
+            },
+            { 
+                title: "Διαμέρισμα στο Μικρολίμανο",
+                image_link: "https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730",
+                price: "400",
+                size: 45,
+                year: 2002,
+                bedrooms: 1,
+                bathrooms: 1
+            },
+            { 
+                title: "Διαμέρισμα στα Μανιάτικα",
+                image_link: "https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730",
+                price: "500",
+                size: 55,
+                year: 2010,
+                bedrooms: 1,
+                bathrooms: 1
             }
         ];
 
@@ -101,7 +258,9 @@
         const resultContainer = document.getElementById('result-container');
         const resultMessage = document.getElementById('result-message');
         const restartBtn = document.getElementById('restart-btn');
+        const viewPropertiesBtn = document.getElementById('view-properties');
         const progressBar = document.getElementById('progress');
+        const featuredContainer = document.getElementById('featured-properties-container');
 
         // State variables
         let currentQuestionIndex = 0;
@@ -109,6 +268,13 @@
         let answers = [];
         let isInFollowUp = false;
         let followUpQuestions = [];
+
+        // Initialize the page
+        function initPage() {
+            initQuestionnaire();
+            loadFeaturedProperties();
+            initMobileMenu();
+        }
 
         // Initialize the questionnaire
         function initQuestionnaire() {
@@ -184,8 +350,48 @@
             });
             summary += "</ul>";
             
-            resultMessage.innerHTML = `Οι απαντήσεις σου: ${summary}`;
+            resultMessage.innerHTML = `Βάσει των απαντήσεών σας: ${summary}`;
             progressBar.style.width = '100%';
+        }
+
+        // Load featured properties
+        function loadFeaturedProperties() {
+            featuredProperties.forEach(property => {
+                const card = document.createElement('article');
+                card.className = 'property-card';
+                card.innerHTML = `
+                    <div class="property-image">
+                        <img src="${property.image_link}" alt="${property.title}" loading="lazy">
+                        <span class="property-tag">${property.size} τ.μ.</span>
+                    </div>
+                    <div class="property-details">
+                        <h3>${property.title}</h3>
+                        <div class="property-price">${property.price} €</div>
+                        <div class="property-features">
+                            <span><i class="fas fa-bed"></i> ${property.bedrooms}</span>
+                            <span><i class="fas fa-bath"></i> ${property.bathrooms}</span>
+                            <span><i class="fas fa-calendar-alt"></i> ${property.year}</span>
+                        </div>
+                        <button class="view-details" onclick="viewDetails('${property.title}', '${property.image_link}', '${property.price}', ${property.size}, ${property.year})">
+                            Περισσότερες πληροφορίες
+                        </button>
+                    </div>
+                `;
+                featuredContainer.appendChild(card);
+            });
+        }
+
+        // Initialize mobile menu
+        function initMobileMenu() {
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuButton.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !expanded);
+                navLinks.style.display = expanded ? 'none' : 'flex';
+                this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
+            });
         }
 
         // Restart questionnaire
@@ -203,8 +409,25 @@
             initQuestionnaire();
         });
 
-        // Start the questionnaire
-        initQuestionnaire();
+        // View properties button
+        viewPropertiesBtn.addEventListener('click', () => {
+            window.location.href = 'properties.html';
+        });
+
+        // View property details
+        function viewDetails(title, image, price, size, year) {
+            const params = new URLSearchParams({
+                title: title,
+                image: image,
+                price: price,
+                size: size,
+                year: year
+            });
+            window.location.href = 'seedetails.html?' + params.toString();
+        }
+
+        // Start the page
+        initPage();
     </script>
 </body>
 </html>

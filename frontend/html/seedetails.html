@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prime Properties - Βρείτε το ιδανικό σας σπίτι. Πληροφορίες για το ακίνητο που σας ενδιαφέρει.">
+    <title>Prime Properties | Πληροφορίες Ακινήτου</title>
+    <link rel="stylesheet" href="../css/seedetails.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Panel -->
+    <header class="top-panel" role="banner">
+        <div class="top-panel-container">
+            <div class="contact-info" aria-label="Στοιχεία επικοινωνίας">
+                <a href="tel:+306949363655" aria-label="Τηλεφωνήστε μας"><i class="fas fa-phone" aria-hidden="true"></i> 6949363655</a>
+                <a href="mailto:alexisptr204@gmail.com" aria-label="Στείλτε μας email"><i class="fas fa-envelope" aria-hidden="true"></i> alexisptr204@gmail.com</a>
+                <a href="https://maps.google.com/?q=Karaoli ke Dimitriou 80, Pireas 185 34" target="_blank" rel="noopener" aria-label="Δείτε τη τοποθεσία μας στον χάρτη"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Karaoli ke Dimitriou 80, Pireas 185 34</a>
+            </div>
+            <div class="social-links" aria-label="Κοινωνικά δίκτυα">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav" role="navigation" aria-label="Κύρια πλοήγηση">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Αρχική σελίδα">My<span>Home</span></a>
+            <ul class="nav-links">
+                <li><a href="homepage.html">Αρχική</a></li>
+                <li><a href="properties.html">Ακίνητα</a></li>
+                <li><a href="#">Σχετικά με εμάς</a></li>
+                <li><a href="#">Επικοινωνία</a></li>
+                <li><a href="#" class="cta-button">Σύνδεση</a></li>
+            </ul>
+            <button class="mobile-menu-button" aria-label="Μενού" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" role="main">
+        <div class="property-details-container">
+            <section class="property-details" aria-labelledby="property-title">
+                <h1 id="title"></h1>
+                <figure>
+                    <img id="image" src="" alt="Εικόνα Ακινήτου" />
+                    <figcaption class="visually-hidden">Εικόνα του ακινήτου</figcaption>
+                </figure>
+                <div class="property-meta">
+                    <p id="price" class="price-tag"></p>
+                    <p id="size"></p>
+                    <p id="year"></p>
+                    <p id="location"></p>
+                </div>
+                <div class="property-description">
+                    <h2>Περιγραφή</h2>
+                    <p id="description"></p>
+                </div>
+                <div class="property-features">
+                    <h2>Χαρακτηριστικά</h2>
+                    <ul id="features"></ul>
+                </div>
+                <button class="contact-button" aria-label="Επικοινωνία για το ακίνητο">
+                    <i class="fas fa-envelope"></i> Επικοινωνία
+                </button>
+            </section>
+
+            <aside class="stats-box" aria-labelledby="stats-title">
+                <h2 id="stats-title">Στατιστικά Ακινήτου</h2>
+                <div class="sustainability-score">
+                    <div class="score-circle" aria-label="Βαθμολογία βιωσιμότητας">74</div>
+                    <p>Sustainability Score</p>
+                </div>
+                <ul class="stats-list" aria-label="Στατιστικά">
+                    <li><strong>Βαθμολογία Περπατήματος:</strong> 97</li>
+                    <li><strong>Βαθμολογία Μεταφορών:</strong> 79</li>
+                    <li><strong>Βαθμολογία Ποδηλάτου:</strong> 88</li>
+                </ul>
+                <div class="weight-chart">
+                    <canvas id="scoreChart" width="300" height="300" role="img" aria-label="Γράφημα στατιστικών"></canvas>
+                </div>
+                <div class="property-actions">
+                    <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                        <i class="far fa-heart"></i> Αγαπημένο
+                    </button>
+                    <button class="share-button" aria-label="Κοινοποίηση ακινήτου">
+                        <i class="fas fa-share-alt"></i> Κοινοποίηση
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <section class="similar-properties" aria-labelledby="similar-title">
+            <h2 id="similar-title">Παρόμοια Ακίνητα</h2>
+            <div class="properties-grid" id="similar-properties-container">
+                <!-- Θα γεμίσει με JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>MyHome</h3>
+                <p>Βρείτε το ιδανικό σας σπίτι με την βοήθεια των ειδικών μας.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Γρήγοροι Σύνδεσμοι</h3>
+                <ul>
+                    <li><a href="homepage.html">Αρχική</a></li>
+                    <li><a href="properties.html">Ακίνητα</a></li>
+                    <li><a href="about.html">Σχετικά με εμάς</a></li>
+                    <li><a href="contact.html">Επικοινωνία</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Επικοινωνία</h3>
+                <address>
+                    Karaoli ke Dimitriou 80<br>
+                    Pireas 185 34<br>
+                    <a href="tel:+306949363655">6949363655</a><br>
+                    <a href="mailto:alexisptr204@gmail.com">alexisptr204@gmail.com</a>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyHome. Όλα τα δικαιώματα διατηρούνται.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get property details from URL parameters
+            const params = new URLSearchParams(window.location.search);
+            
+            // Set property details
+            document.getElementById('title').textContent = params.get('title') || 'Δεν βρέθηκε τίτλος';
+            document.getElementById('image').src = params.get('image') || 'default-property.jpg';
+            document.getElementById('image').alt = params.get('title') || 'Εικόνα ακινήτου';
+            document.getElementById('price').textContent = 'Τιμή: ' + (params.get('price') ? `${params.get('price')} €` : 'Κατόπιν συνεννόησης');
+            document.getElementById('size').textContent = 'Μέγεθος: ' + (params.get('size') || '') + ' τ.μ.';
+            document.getElementById('year').textContent = 'Έτος κατασκευής: ' + (params.get('year') || '-');
+            document.getElementById('location').textContent = 'Τοποθεσία: ' + (params.get('location') || 'Πειραιάς');
+            document.getElementById('description').textContent = params.get('description') || 'Δεν υπάρχει διαθέσιμη περιγραφή για αυτό το ακίνητο.';
+            
+            // Set features
+            const features = params.get('features') ? params.get('features').split(',') : ['3 Κρεβατοκάμαρες', '2 Μπάνια', 'Κουζίνα', 'Πάρκινγκ'];
+            const featuresList = document.getElementById('features');
+            features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature.trim();
+                featuresList.appendChild(li);
+            });
+            
+            // Initialize chart
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Περπατήματος', 'Μεταφορών', 'Ποδηλάτου'],
+                    datasets: [{
+                        data: [97, 79, 88],
+                        backgroundColor: [
+                            '#2ecc71',
+                            '#3498db',
+                            '#9b59b6'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+            
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuButton.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !expanded);
+                navLinks.style.display = expanded ? 'none' : 'flex';
+                this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
+            });
+            
+            // Load similar properties (mock data)
+            const similarContainer = document.getElementById('similar-properties-container');
+            const similarProperties = [
+                {title: 'Παρόμοιο Διαμέρισμα', price: '180,000', size: '85', image: 'https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730'},
+                {title: 'Οικογενειακή Κατοικία', price: '250,000', size: '120', image: 'https://m2.spitogatos.gr/311467849_300x220.jpg?v=20130730'},
+                {title: 'Μοντέρνο Στούντιο', price: '120,000', size: '45', image: 'https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730'}
+            ];
+            
+            similarProperties.forEach(property => {
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'property-card';
+                propertyCard.innerHTML = `
+                    <img src="${property.image}" alt="${property.title}">
+                    <h3>${property.title}</h3>
+                    <p>Τιμή: ${property.price} €</p>
+                    <p>Μέγεθος: ${property.size} τ.μ.</p>
+                    <a href="properties.html?title=${encodeURIComponent(property.title)}&price=${property.price}&size=${property.size}" class="info-btn">Περισσότερα</a>
+                `;
+                similarContainer.appendChild(propertyCard);
+            });
+        });
+    </script>
+</body>
+</html>
