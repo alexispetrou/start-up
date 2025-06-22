@@ -74,11 +74,28 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="price-min">Τιμή από (€)</label>
-                            <input type="number" id="price-min" placeholder="Ελάχιστη τιμή">
+                            <select id="price-min">
+                                <option value="">Ελάχιστη τιμή</option>
+                                <option value="200">200 €</option>
+                                <option value="300">300 €</option>
+                                <option value="400">400 €</option>
+                                <option value="500">500 €</option>
+                                <option value="600">600 €</option>
+                                <option value="700">700 €</option>
+                            </select>
                         </div>
+
                         <div class="form-group">
                             <label for="price-max">Τιμή έως (€)</label>
-                            <input type="number" id="price-max" placeholder="Μέγιστη τιμή">
+                            <select id="price-max">
+                                <option value="">Μέγιστη τιμή</option>
+                                <option value="600">600 €</option>
+                                <option value="700">700 €</option>
+                                <option value="800">800 €</option>
+                                <option value="900">900 €</option>
+                                <option value="1000">1000 €</option>
+                                <option value="1001">1000+ €</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="search-button">
