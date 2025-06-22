@@ -10,6 +10,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #f39c12;
+            --accent-color: #e67e22;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --dark-gray: #7f8c8d;
+            --success-color: #2ecc71;
+            --info-color: #3498db;
+            --warning-color: #f1c40f;
+            --danger-color: #e74c3c;
+        }
+
+        .map-search-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .map-container {
+            flex: 2;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-filters {
+            flex: 1;
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-filters h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 992px) {
+            .map-search-container {
+                flex-direction: column;
+            }
+            
+            .map-container {
+                order: 1;
+            }
+            
+            .search-filters {
+                order: 2;
+            }
+        }
+
+        /* Rest of your existing CSS remains the same */
+    </style>
 </head>
 <body>
     <!-- Top Panel -->
@@ -45,11 +105,18 @@
             </button>
         </div>
     </nav>
+
     <!-- Main Content -->
     <main class="main-content" role="main">
-        <section class="search-section">
-            <div class="search-container">
-                <h1>Βρείτε το ιδανικό σας σπίτι</h1>
+        <div class="map-search-container">
+            <!-- Map on the left -->
+            <div class="map-container">
+                <div id="property-map" style="height: 600px; width: 100%;"></div>
+            </div>
+            
+            <!-- Search filters on the right -->
+            <div class="search-filters">
+                <h1>Φίλτρα Αναζήτησης</h1>
                 <form class="search-form" role="search">
                     <div class="form-row">
                         <div class="form-group">
@@ -103,7 +170,7 @@
                     </button>
                 </form>
             </div>
-        </section>
+        </div>
 
         <section class="properties-section" aria-labelledby="properties-title">
             <div class="section-header">
@@ -148,100 +215,140 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Property data
-            const properties = [
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m3.spitogatos.gr/317741837_300x220.jpg?v=20130730",
-                    price: "600",
-                    size: 65,
-                    year: 2006,
-                    location: "dimitriou",
-                    type: "apartment",
-                    bedrooms: 2,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στο Μικρολίμανο",
-                    image_link: "https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730",
-                    price: "400",
-                    size: 45,
-                    year: 2002,
-                    location: "mikrolimano",
-                    type: "apartment",
-                    bedrooms: 1,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m2.spitogatos.gr/311467849_300x220.jpg?v=20130730",
-                    price: "700",
-                    size: 62,
-                    year: 2016,
-                    location: "dimitriou",
-                    type: "apartment",
-                    bedrooms: 2,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στα Μανιάτικα",
-                    image_link: "https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730",
-                    price: "500",
-                    size: 55,
-                    year: 2010,
-                    location: "maniatika",
-                    type: "apartment",
-                    bedrooms: 1,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m2.spitogatos.gr/317826253_900x675.jpg?v=20130730",
-                    price: "360",
-                    size: 35,
-                    year: 1997,
-                    location: "dimitriou",
-                    type: "studio",
-                    bedrooms: 0,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m3.spitogatos.gr/317821754_900x675.jpg?v=20130730",
-                    price: "900",
-                    size: 75,
-                    year: 2017,
-                    location: "dimitriou",
-                    type: "apartment",
-                    bedrooms: 3,
-                    bathrooms: 2
-                },
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m2.spitogatos.gr/318495127_300x220.jpg?v=20130730",
-                    price: "560",
-                    size: 65,
-                    year: 1997,
-                    location: "dimitriou",
-                    type: "apartment",
-                    bedrooms: 2,
-                    bathrooms: 1
-                },
-                { 
-                    title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                    image_link: "https://m2.spitogatos.gr/317238883_300x220.jpg?v=20130730",
-                    price: "1000",
-                    size: 95,
-                    year: 2017,
-                    location: "dimitriou",
-                    type: "apartment",
-                    bedrooms: 3,
-                    bathrooms: 2
-                }
-            ];
+        // Property data
+        const properties = [
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m3.spitogatos.gr/317741837_300x220.jpg?v=20130730",
+                price: "600",
+                size: 65,
+                year: 2006,
+                location: "dimitriou",
+                type: "apartment",
+                bedrooms: 2,
+                bathrooms: 1,
+                lat: 37.9450,
+                lng: 23.6430
+            },
+            { 
+                title: "Διαμέρισμα στο Μικρολίμανο",
+                image_link: "https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730",
+                price: "400",
+                size: 45,
+                year: 2002,
+                location: "mikrolimano",
+                type: "apartment",
+                bedrooms: 1,
+                bathrooms: 1,
+                lat: 37.9405,
+                lng: 23.6550
+            },
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m2.spitogatos.gr/311467849_300x220.jpg?v=20130730",
+                price: "700",
+                size: 62,
+                year: 2016,
+                location: "dimitriou",
+                type: "apartment",
+                bedrooms: 2,
+                bathrooms: 1,
+                lat: 37.9450,
+                lng: 23.6430
+            },
+            { 
+                title: "Διαμέρισμα στα Μανιάτικα",
+                image_link: "https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730",
+                price: "500",
+                size: 55,
+                year: 2010,
+                location: "maniatika",
+                type: "apartment",
+                bedrooms: 1,
+                bathrooms: 1,
+                lat: 37.9380,
+                lng: 23.6350
+            },
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m2.spitogatos.gr/317826253_900x675.jpg?v=20130730",
+                price: "360",
+                size: 35,
+                year: 1997,
+                location: "dimitriou",
+                type: "studio",
+                bedrooms: 0,
+                bathrooms: 1,
+                lat: 37.9450,
+                lng: 23.6430
+            },
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m3.spitogatos.gr/317821754_900x675.jpg?v=20130730",
+                price: "900",
+                size: 75,
+                year: 2017,
+                location: "dimitriou",
+                type: "apartment",
+                bedrooms: 3,
+                bathrooms: 2,
+                lat: 37.9450,
+                lng: 23.6430
+            },
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m2.spitogatos.gr/318495127_300x220.jpg?v=20130730",
+                price: "560",
+                size: 65,
+                year: 1997,
+                location: "dimitriou",
+                type: "apartment",
+                bedrooms: 2,
+                bathrooms: 1,
+                lat: 37.9450,
+                lng: 23.6430
+            },
+            { 
+                title: "Διαμέρισμα στο Δημοτικό θέατρο",
+                image_link: "https://m2.spitogatos.gr/317238883_300x220.jpg?v=20130730",
+                price: "1000",
+                size: 95,
+                year: 2017,
+                location: "dimitriou",
+                type: "apartment",
+                bedrooms: 3,
+                bathrooms: 2,
+                lat: 37.9450,
+                lng: 23.6430
+            }
+        ];
 
+        // Initialize Leaflet map
+        const map = L.map('property-map').setView([37.9420, 23.6462], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Add markers to map
+        function addMarkers(propertiesToShow) {
+            // Clear existing markers
+            map.eachLayer(layer => {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            // Add new markers
+            propertiesToShow.forEach(property => {
+                L.marker([property.lat, property.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${property.title}</b><br>Τιμή: ${property.price}€`);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
             // Load properties
             const container = document.getElementById('properties-container');
             
@@ -278,6 +385,9 @@
                     `;
                     container.appendChild(card);
                 });
+
+                // Update map markers
+                addMarkers(filteredProperties);
             }
 
             // Initial load
@@ -326,11 +436,12 @@
             window.location.href = 'seedetails.html?' + params.toString();
         }
 
-         document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('favorite-icon')) {
-            e.target.classList.toggle('active');
-        }
-    });
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('favorite-button')) {
+                e.target.querySelector('i').classList.toggle('fas');
+                e.target.querySelector('i').classList.toggle('far');
+            }
+        });
     </script>
 </body>
 </html>

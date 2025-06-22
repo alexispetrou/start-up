@@ -47,33 +47,64 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero" role="region" aria-labelledby="hero-heading">
-        <div class="hero-content">
-            <h1 id="hero-heading">Βρείτε το σπίτι των ονείρων σας</h1>
-            <p class="hero-subtitle">Ειδικευόμαστε στην εύρεση του τέλειου σπιτιού για κάθε ανάγκη και προϋπολογισμό</p>
-            
-            <div class="questionnaire">
-                <div class="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div id="question-container" class="question-container">
-                    <!-- Questions will be inserted here by JavaScript -->
-                </div>
-                <div id="result-container" class="hidden">
-                    <h3>Ευχαριστούμε για τις απαντήσεις σου!</h3>
-                    <p id="result-message"></p>
-                    <div class="result-actions">
-                        <button id="view-properties" class="answer-btn">
-                            <i class="fas fa-search"></i> Δες τα ακίνητα
-                        </button>
-                        <button id="restart-btn" class="answer-btn outline">
-                            <i class="fas fa-redo"></i> Ξεκίνα πάλι
-                        </button>
+   <main class="main-content" role="main">
+        <section class="search-section">
+            <div class="search-container">
+                <h1>Βρείτε το ιδανικό σας σπίτι</h1>
+                <form class="search-form" role="search" onsubmit="handleSearch(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Τοποθεσία</label>
+                            <select id="location">
+                                <option value="">Όλες οι περιοχές</option>
+                                <option value="dimitriou">Δημοτικό Θέατρο</option>
+                                <option value="mikrolimano">Μικρολίμανο</option>
+                                <option value="maniatika">Μανιάτικα</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Τύπος</label>
+                            <select id="type">
+                                <option value="">Όλοι οι τύποι</option>
+                                <option value="apartment">Διαμέρισμα</option>
+                                <option value="house">Οικογενειακή κατοικία</option>
+                                <option value="studio">Στούντιο</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price-min">Τιμή από (€)</label>
+                            <select id="price-min">
+                                <option value="">Ελάχιστη τιμή</option>
+                                <option value="200">200 €</option>
+                                <option value="300">300 €</option>
+                                <option value="400">400 €</option>
+                                <option value="500">500 €</option>
+                                <option value="600">600 €</option>
+                                <option value="700">700 €</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price-max">Τιμή έως (€)</label>
+                            <select id="price-max">
+                                <option value="">Μέγιστη τιμή</option>
+                                <option value="600">600 €</option>
+                                <option value="700">700 €</option>
+                                <option value="800">800 €</option>
+                                <option value="900">900 €</option>
+                                <option value="1000">1000 €</option>
+                                <option value="1001">1000+ €</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i> Αναζήτηση
+                    </button>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
     
     <!-- Features Section -->
     <section class="features-section" aria-labelledby="features-heading">
@@ -189,38 +220,7 @@
     </footer>
 
     <script>
-        // Questions data
-        const questions = [
-            {
-                question: "Σας ενδιαφέρει να νοικιάσετε ή να αγοράσετε;",
-                answers: ["Νοικιάζω", "Αγοράζω"],
-                followUp: null
-            },
-            {
-                question: "Σε ποια περιοχή θα θέλατε να αναζητήσουμε;",
-                answers: ["Δημοτικό Θέατρο", "Μικρολίμανο", "Μανιάτικα", "Άλλη περιοχή"],
-                followUp: null
-            },
-            {
-                question: "Είστε φοιτητής/τρια;",
-                answers: ["Ναι", "Όχι"],
-                followUp: [
-                    {
-                        question: "Σε ποιο πανεπιστήμιο θα θέλατε να είστε κοντά;",
-                        answers: ["ΕΚΠΑ", "ΠΑΠΕΙ", "ΟΠΑ", "ΕΜΠ", "Άλλο"]
-                    },
-                    {
-                        question: "Θα προτιμούσατε να μετακινείστε με τα πόδια;",
-                        answers: ["Ναι", "Όχι"]
-                    }
-                ]
-            },
-            {
-                question: "Τι μέγεθος ακινήτου ψάχνετε;",
-                answers: ["Στούντιο", "1-2 υπνοδωμάτια", "3+ υπνοδωμάτια"],
-                followUp: null
-            }
-        ];
+        
 
         // Featured properties data
         const featuredProperties = [
@@ -253,6 +253,24 @@
             }
         ];
 
+        function handleSearch(event) {
+            event.preventDefault(); // Αποτρέπει την προεπιλεγμένη συμπεριφορά φόρμας
+
+            const location = document.getElementById('location').value;
+            const type = document.getElementById('type').value;
+            const priceMin = document.getElementById('price-min').value;
+            const priceMax = document.getElementById('price-max').value;
+
+            const params = new URLSearchParams({
+                location,
+                type,
+                priceMin,
+                priceMax
+            });
+
+            window.location.href = `properties.html?${params.toString()}`;
+        }
+
         // DOM elements
         const questionContainer = document.getElementById('question-container');
         const resultContainer = document.getElementById('result-container');
@@ -276,67 +294,7 @@
             initMobileMenu();
         }
 
-        // Initialize the questionnaire
-        function initQuestionnaire() {
-            showQuestion(questions[currentQuestionIndex]);
-        }
-
-        // Show a question
-        function showQuestion(questionObj) {
-            // Update progress bar
-            const totalQuestions = questions.length + (questionObj.followUp ? questionObj.followUp.length : 0);
-            const answeredQuestions = answers.length;
-            const progress = (answeredQuestions / totalQuestions) * 100;
-            progressBar.style.width = `${progress}%`;
-            
-            // Create question HTML
-            questionContainer.innerHTML = `
-                <div class="question">${questionObj.question}</div>
-                <div class="answer-options" id="answer-options">
-                    ${questionObj.answers.map(answer => 
-                        `<button class="answer-btn" onclick="handleAnswer('${answer}')">${answer}</button>`
-                    ).join('')}
-                </div>
-            `;
-        }
-
-        // Handle user answer
-        function handleAnswer(answer) {
-            answers.push({
-                question: isInFollowUp ? followUpQuestions[currentFollowUpIndex].question : questions[currentQuestionIndex].question,
-                answer: answer
-            });
-
-            // Check if we need to show follow-up questions
-            if (!isInFollowUp && questions[currentQuestionIndex].followUp && answer === "Ναι") {
-                isInFollowUp = true;
-                followUpQuestions = questions[currentQuestionIndex].followUp;
-                currentFollowUpIndex = 0;
-                showQuestion(followUpQuestions[currentFollowUpIndex]);
-                return;
-            }
-
-            // Move to next question
-            if (isInFollowUp) {
-                currentFollowUpIndex++;
-                if (currentFollowUpIndex < followUpQuestions.length) {
-                    showQuestion(followUpQuestions[currentFollowUpIndex]);
-                    return;
-                } else {
-                    isInFollowUp = false;
-                    currentQuestionIndex++;
-                }
-            } else {
-                currentQuestionIndex++;
-            }
-
-            // Check if we've completed all questions
-            if (currentQuestionIndex < questions.length) {
-                showQuestion(questions[currentQuestionIndex]);
-            } else {
-                showResults();
-            }
-        }
+       
 
         // Show results
         function showResults() {

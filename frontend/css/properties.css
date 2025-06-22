@@ -250,6 +250,47 @@ button {
     background-color: var(--secondary-color);
     color: var(--white);
     border: none;
+    .map-search-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.map-container {
+    flex: 2;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.search-filters {
+    flex: 1;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.search-filters h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .map-search-container {
+        flex-direction: column;
+    }
+    
+    .map-container {
+        order: 1;
+    }
+    
+    .search-filters {
+        order: 2;
+    }
+}
     padding: 0.75rem;
     border-radius: 0.25rem;
     font-weight: 600;
