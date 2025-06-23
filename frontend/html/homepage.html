@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .nav-links.mobile-visible {
+            display: flex !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Top Panel -->
@@ -47,7 +52,7 @@
     </nav>
     
     <!-- Hero Section -->
-   <main class="main-content" role="main">
+    <main class="main-content" role="main">
         <section class="search-section">
             <div class="search-container">
                 <h1>Βρείτε το ιδανικό σας σπίτι</h1>
@@ -106,87 +111,88 @@
             </div>
         </section>
     
-    <!-- Features Section -->
-    <section class="features-section" aria-labelledby="features-heading">
-        <div class="container">
-            <h2 id="features-heading" class="section-title">Γιατί να επιλέξετε εμάς;</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-home"></i>
+        <!-- Features Section -->
+        <section class="features-section" aria-labelledby="features-heading">
+            <div class="container">
+                <h2 id="features-heading" class="section-title">Γιατί να επιλέξετε εμάς;</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Ευρεία Ποικιλία</h3>
+                        <p>Εκατοντάδες ακίνητα σε όλο τον Πειραιά και γύρω περιοχές</p>
                     </div>
-                    <h3>Ευρεία Ποικιλία</h3>
-                    <p>Εκατοντάδες ακίνητα σε όλο τον Πειραιά και γύρω περιοχές</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-euro-sign"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <h3>Καλύτερες Τιμές</h3>
+                        <p>Διαπραγματευόμαστε τις καλύτερες τιμές για εσάς</p>
                     </div>
-                    <h3>Καλύτερες Τιμές</h3>
-                    <p>Διαπραγματευόμαστε τις καλύτερες τιμές για εσάς</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Επαγγελματική Συμβουλή</h3>
-                    <p>Εμπειρογνώμονες με 20+ χρόνια εμπειρίας</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Featured Properties -->
-    <section class="featured-properties" aria-labelledby="featured-heading">
-        <div class="container">
-            <h2 id="featured-heading" class="section-title">Προτεινόμενα Ακίνητα</h2>
-            <div class="properties-grid" id="featured-properties-container">
-                <!-- Featured properties will be loaded by JavaScript -->
-            </div>
-            <div class="section-footer">
-                <a href="properties.html" class="view-all-btn">Δείτε όλα τα ακίνητα <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials -->
-    <section class="testimonials" aria-labelledby="testimonials-heading">
-        <div class="container">
-            <h2 id="testimonials-heading" class="section-title">Τι Λένε Οι Πελάτες Μας</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Βρήκα το ιδανικό διαμέρισμα για τις σπουδές μου μέσα σε λίγες μέρες!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-name">Μαρία Κ.</div>
-                        <div class="author-title">Φοιτήτρια</div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Επαγγελματική και γρήγορη εξυπηρέτηση. Το συνιστώ ανεπιφύλακτα!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-name">Γιάννης Π.</div>
-                        <div class="author-title">Επιχειρηματίας</div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Επαγγελματική Συμβουλή</h3>
+                        <p>Εμπειρογνώμονες με 20+ χρόνια εμπειρίας</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Call to Action -->
-    <section class="cta-section" aria-labelledby="cta-heading">
-        <div class="container">
-            <h2 id="cta-heading">Ετοιμοι να ξεκινήσετε την αναζήτηση;</h2>
-            <p>Επικοινωνήστε μαζί μας σήμερα για να σας βοηθήσουμε να βρείτε το ιδανικό σας σπίτι</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-button primary"><i class="fas fa-envelope"></i> Επικοινωνία</a>
-                <a href="tel:+306949363655" class="cta-button secondary"><i class="fas fa-phone"></i> Κλήση</a>
+        </section>
+        
+        <!-- Featured Properties -->
+        <section class="featured-properties" aria-labelledby="featured-heading">
+            <div class="container">
+                <h2 id="featured-heading" class="section-title">Προτεινόμενα Ακίνητα</h2>
+                <div class="properties-grid" id="featured-properties-container">
+                    <!-- Featured properties will be loaded by JavaScript -->
+                </div>
+                <div class="section-footer">
+                    <a href="properties.html" class="view-all-btn" id="view-properties">Δείτε όλα τα ακίνητα <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="testimonials" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <h2 id="testimonials-heading" class="section-title">Τι Λένε Οι Πελάτες Μας</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Βρήκα το ιδανικό διαμέρισμα για τις σπουδές μου μέσα σε λίγες μέρες!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-name">Μαρία Κ.</div>
+                            <div class="author-title">Φοιτήτρια</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Επαγγελματική και γρήγορη εξυπηρέτηση. Το συνιστώ ανεπιφύλακτα!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-name">Γιάννης Π.</div>
+                            <div class="author-title">Επιχειρηματίας</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="container">
+                <h2 id="cta-heading">Ετοιμοι να ξεκινήσετε την αναζήτηση;</h2>
+                <p>Επικοινωνήστε μαζί μας σήμερα για να σας βοηθήσουμε να βρείτε το ιδανικό σας σπίτι</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button primary"><i class="fas fa-envelope"></i> Επικοινωνία</a>
+                    <a href="tel:+306949363655" class="cta-button secondary"><i class="fas fa-phone"></i> Κλήση</a>
+                </div>
+            </div>
+        </section>
+    </main>
     
     <!-- Footer -->
     <footer class="main-footer" role="contentinfo">
@@ -219,7 +225,8 @@
         </div>
     </footer>
 
-   <script >// Featured properties data
+    <script>
+        // Featured properties data
         const featuredProperties = [
             { 
                 title: "Διαμέρισμα στο Δημοτικό θέατρο",
@@ -250,130 +257,88 @@
             }
         ];
 
-        
-
         // DOM elements
-        const questionContainer = document.getElementById('question-container');
-        const resultContainer = document.getElementById('result-container');
-        const resultMessage = document.getElementById('result-message');
-        const restartBtn = document.getElementById('restart-btn');
-        const viewPropertiesBtn = document.getElementById('view-properties');
-        const progressBar = document.getElementById('progress');
         const featuredContainer = document.getElementById('featured-properties-container');
-
-        // State variables
-        let currentQuestionIndex = 0;
-        let currentFollowUpIndex = 0;
-        let answers = [];
-        let isInFollowUp = false;
-        let followUpQuestions = [];
+        const viewPropertiesBtn = document.getElementById('view-properties');
 
         // Initialize the page
         function initPage() {
-            initQuestionnaire();
             loadFeaturedProperties();
             initMobileMenu();
-        }
-
-       
-
-        // Show results
-        function showResults() {
-            questionContainer.classList.add('hidden');
-            resultContainer.classList.remove('hidden');
             
-            // Create a summary of answers
-            let summary = "<ul>";
-            answers.forEach(item => {
-                summary += `<li><strong>${item.question}</strong>: ${item.answer}</li>`;
-            });
-            summary += "</ul>";
-            
-            resultMessage.innerHTML = `Βάσει των απαντήσεών σας: ${summary}`;
-            progressBar.style.width = '100%';
+            // Add event listener only if the button exists
+            if (viewPropertiesBtn) {
+                viewPropertiesBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'properties.html';
+                });
+            }
         }
 
         // Load featured properties
         function loadFeaturedProperties() {
-            featuredProperties.forEach(property => {
-                const card = document.createElement('article');
-                card.className = 'property-card';
-                card.innerHTML = `
-                    <div class="property-image">
-                        <img src="${property.image_link}" alt="${property.title}" loading="lazy">
-                        <span class="property-tag">${property.size} τ.μ.</span>
-                    </div>
-                    <div class="property-details">
-                        <h3>${property.title}</h3>
-                        <div class="property-price">${property.price} €</div>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> ${property.bedrooms}</span>
-                            <span><i class="fas fa-bath"></i> ${property.bathrooms}</span>
-                            <span><i class="fas fa-calendar-alt"></i> ${property.year}</span>
+            if (featuredContainer) {
+                featuredProperties.forEach(property => {
+                    const card = document.createElement('article');
+                    card.className = 'property-card';
+                    card.innerHTML = `
+                        <div class="property-image">
+                            <img src="${property.image_link}" alt="${property.title}" loading="lazy">
+                            <span class="property-tag">${property.size} τ.μ.</span>
                         </div>
-                        <button class="view-details" onclick="viewDetails('${property.title}', '${property.image_link}', '${property.price}', ${property.size}, ${property.year})">
-                            Περισσότερες πληροφορίες
-                        </button>
-                    </div>
-                `;
-                featuredContainer.appendChild(card);
-            });
+                        <div class="property-details">
+                            <h3>${property.title}</h3>
+                            <div class="property-price">${property.price} €</div>
+                            <div class="property-features">
+                                <span><i class="fas fa-bed"></i> ${property.bedrooms}</span>
+                                <span><i class="fas fa-bath"></i> ${property.bathrooms}</span>
+                                <span><i class="fas fa-calendar-alt"></i> ${property.year}</span>
+                            </div>
+                            <button class="view-details" onclick="viewDetails('${property.title}', '${property.image_link}', '${property.price}', ${property.size}, ${property.year})">
+                                Περισσότερες πληροφορίες
+                            </button>
+                        </div>
+                    `;
+                    featuredContainer.appendChild(card);
+                });
+            }
         }
 
         // Initialize mobile menu
-       // Mobile menu toggle
+        function initMobileMenu() {
             const menuButton = document.querySelector('.mobile-menu-button');
             const navLinks = document.querySelector('.nav-links');
             
-            menuButton.addEventListener('click', function() {
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !expanded);
-                navLinks.style.display = expanded ? 'none' : 'flex';
-                this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
-            });
-        
-
-
-
-        // Restart questionnaire
-        restartBtn.addEventListener('click', () => {
-            currentQuestionIndex = 0;
-            currentFollowUpIndex = 0;
-            answers = [];
-            isInFollowUp = false;
-            followUpQuestions = [];
-            
-            questionContainer.classList.remove('hidden');
-            resultContainer.classList.add('hidden');
-            progressBar.style.width = '0%';
-            
-            initQuestionnaire();
-        });
-
-        // View properties button
-        viewPropertiesBtn.addEventListener('click', () => {
-            window.location.href = 'properties.html';
-        });
+            if (menuButton && navLinks) {
+                menuButton.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    navLinks.classList.toggle('mobile-visible');
+                    this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
+                });
+            }
+        }
 
         function handleSearch(event) {
-    event.preventDefault(); // Prevent the default form submission
-    
-    // Get the search parameters from the form
-    const location = document.getElementById('location').value;
-    const type = document.getElementById('type').value;
-    const priceMin = document.getElementById('price-min').value;
-    const priceMax = document.getElementById('price-max').value;
-    
-    // Create a URL with the search parameters as query strings
-    const params = new URLSearchParams();
-    if (location) params.append('location', location);
-    if (type) params.append('type', type);
-    if (priceMin) params.append('priceMin', priceMin);
-    if (priceMax) params.append('priceMax', priceMax);
-    
-    // Redirect to properties.html with the search parameters
-    window.location.href = 'properties.html?' + params.toString();
-}
+            event.preventDefault();
+            
+            // Get the search parameters from the form
+            const location = document.getElementById('location').value;
+            const type = document.getElementById('type').value;
+            const priceMin = document.getElementById('price-min').value;
+            const priceMax = document.getElementById('price-max').value;
+            
+            // Create a URL with the search parameters as query strings
+            const params = new URLSearchParams();
+            if (location) params.append('location', location);
+            if (type) params.append('type', type);
+            if (priceMin) params.append('priceMin', priceMin);
+            if (priceMax) params.append('priceMax', priceMax);
+            
+            // Redirect to properties.html with the search parameters
+            window.location.href = 'properties.html?' + params.toString();
+        }
+
         // View property details
         function viewDetails(title, image, price, size, year) {
             const params = new URLSearchParams({
@@ -386,7 +351,8 @@
             window.location.href = 'seedetails.html?' + params.toString();
         }
 
-        // Start the page
-        initPage();</script>
+        // Start the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
 </body>
 </html>
