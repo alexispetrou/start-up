@@ -219,10 +219,7 @@
         </div>
     </footer>
 
-    <script>
-        
-
-        // Featured properties data
+   <script >// Featured properties data
         const featuredProperties = [
             { 
                 title: "Διαμέρισμα στο Δημοτικό θέατρο",
@@ -253,23 +250,7 @@
             }
         ];
 
-        function handleSearch(event) {
-            event.preventDefault(); // Αποτρέπει την προεπιλεγμένη συμπεριφορά φόρμας
-
-            const location = document.getElementById('location').value;
-            const type = document.getElementById('type').value;
-            const priceMin = document.getElementById('price-min').value;
-            const priceMax = document.getElementById('price-max').value;
-
-            const params = new URLSearchParams({
-                location,
-                type,
-                priceMin,
-                priceMax
-            });
-
-            window.location.href = `properties.html?${params.toString()}`;
-        }
+        
 
         // DOM elements
         const questionContainer = document.getElementById('question-container');
@@ -371,7 +352,25 @@
         viewPropertiesBtn.addEventListener('click', () => {
             window.location.href = 'properties.html';
         });
-
+        function handleSearch(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Get the search parameters from the form
+    const location = document.getElementById('location').value;
+    const type = document.getElementById('type').value;
+    const priceMin = document.getElementById('price-min').value;
+    const priceMax = document.getElementById('price-max').value;
+    
+    // Create a URL with the search parameters as query strings
+    const params = new URLSearchParams();
+    if (location) params.append('location', location);
+    if (type) params.append('type', type);
+    if (priceMin) params.append('priceMin', priceMin);
+    if (priceMax) params.append('priceMax', priceMax);
+    
+    // Redirect to properties.html with the search parameters
+    window.location.href = 'properties.html?' + params.toString();
+}
         // View property details
         function viewDetails(title, image, price, size, year) {
             const params = new URLSearchParams({
@@ -385,7 +384,6 @@
         }
 
         // Start the page
-        initPage();
-    </script>
+        initPage();</script>
 </body>
 </html>
