@@ -321,7 +321,7 @@
         }
 
         // Initialize mobile menu
-        function initMobileMenu() {
+       // Mobile menu toggle
             const menuButton = document.querySelector('.mobile-menu-button');
             const navLinks = document.querySelector('.nav-links');
             
@@ -331,7 +331,9 @@
                 navLinks.style.display = expanded ? 'none' : 'flex';
                 this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
             });
-        }
+        
+
+
 
         // Restart questionnaire
         restartBtn.addEventListener('click', () => {
@@ -352,6 +354,7 @@
         viewPropertiesBtn.addEventListener('click', () => {
             window.location.href = 'properties.html';
         });
+
         function handleSearch(event) {
     event.preventDefault(); // Prevent the default form submission
     
