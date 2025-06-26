@@ -5,107 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Prime Properties - Βρείτε το ιδανικό σας σπίτι. Περιήγηση σε όλα τα διαθέσιμα ακίνητα.">
     <title>Prime Properties | Ακίνητα</title>
-    <link rel="stylesheet" href="../css/properties.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-   
+    <link rel="stylesheet" href="../css/properties.css">
 </head>
 <body>
-    <!-- Top Panel -->
-    <header class="top-panel" role="banner">
-        <div class="top-panel-container">
-            <div class="contact-info" aria-label="Στοιχεία επικοινωνίας">
-                <a href="tel:+306949363655" aria-label="Τηλεφωνήστε μας"><i class="fas fa-phone" aria-hidden="true"></i> 6949363655</a>
-                <a href="mailto:alexisptr204@gmail.com" aria-label="Στείλτε μας email"><i class="fas fa-envelope" aria-hidden="true"></i> alexisptr204@gmail.com</a>
-                <a href="https://maps.google.com/?q=Karaoli ke Dimitriou 80, Pireas 185 34" target="_blank" rel="noopener" aria-label="Δείτε τη τοποθεσία μας στον χάρτη"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Karaoli ke Dimitriou 80, Pireas 185 34</a>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="contact-info">
+                <a href="tel:+306949363655"><i class="fas fa-phone"></i> 6949363655</a>
+                <a href="mailto:alexisptr204@gmail.com"><i class="fas fa-envelope"></i> alexisptr204@gmail.com</a>
+                <a href="https://maps.google.com/?q=Karaoli ke Dimitriou 80, Pireas 185 34" target="_blank"><i class="fas fa-map-marker-alt"></i> Karaoli ke Dimitriou 80, Pireas</a>
             </div>
-            <div class="social-links" aria-label="Κοινωνικά δίκτυα">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
-    </header>
+    </div>
     
     <!-- Main Navigation -->
-    <nav class="main-nav" role="navigation" aria-label="Κύρια πλοήγηση">
-        <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="Αρχική σελίδα">My<span>Home</span></a>
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-home"></i>Prime<span>Properties</span></a>
             <ul class="nav-links">
                 <li><a href="homepage.html">Αρχική</a></li>
-                <li><a href="properties.html">Ακίνητα</a></li>
-                <li><a href="#">Σχετικά με εμάς</a></li>
+                <li><a href="properties.html" class="active">Ακίνητα</a></li>
+                <li><a href="#">Σχετικά</a></li>
                 <li><a href="#">Επικοινωνία</a></li>
-                <li><a href="login.html" class="cta-button">Σύνδεση</a></li>
+                <li><a href="login.html" class="cta-button"><i class="fas fa-sign-in-alt"></i> Σύνδεση</a></li>
             </ul>
-            <button class="mobile-menu-button" aria-label="Μενού" aria-expanded="false">
+            <button class="mobile-menu-button" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
-
+    
     <!-- Main Content -->
-    <main class="main-content" role="main">
+    <main class="container">
+        <!-- Map and Search Filters -->
         <div class="map-search-container">
-            <!-- Map on the left -->
-            <div class="map-container">
-                <div id="property-map" style="height: 600px; width: 100%;"></div>
+            <!-- Map Container -->
+            <div class="map-container fade-in">
+                <div id="property-map"></div>
             </div>
             
-            <!-- Search filters on the right -->
-            <div class="search-filters">
+            <!-- Search Filters -->
+            <div class="search-filters fade-in delay-1">
                 <h1>Φίλτρα Αναζήτησης</h1>
                 <form class="search-form" role="search">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="location">Τοποθεσία</label>
-                            <select id="location">
-                                <option value="">Όλες οι περιοχές</option>
-                                <option value="dimitriou">Δημοτικό Θέατρο</option>
-                                <option value="mikrolimano">Μικρολίμανο</option>
-                                <option value="maniatika">Μανιάτικα</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Τύπος</label>
-                            <select id="type">
-                                <option value="">Όλοι οι τύποι</option>
-                                <option value="apartment">Διαμέρισμα</option>
-                                <option value="house">Οικογενειακή κατοικία</option>
-                                <option value="studio">Στούντιο</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="location">Τοποθεσία</label>
+                        <select id="location">
+                            <option value="">Όλες οι περιοχές</option>
+                            <option value="dimitriou">Δημοτικό Θέατρο</option>
+                            <option value="mikrolimano">Μικρολίμανο</option>
+                            <option value="maniatika">Μανιάτικα</option>
+                        </select>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="price-min">Τιμή από (€)</label>
-                            <select id="price-min">
-                                <option value="">Ελάχιστη τιμή</option>
-                                <option value="200">200 €</option>
-                                <option value="300">300 €</option>
-                                <option value="400">400 €</option>
-                                <option value="500">500 €</option>
-                                <option value="600">600 €</option>
-                                <option value="700">700 €</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="price-max">Τιμή έως (€)</label>
-                            <select id="price-max">
-                                <option value="">Μέγιστη τιμή</option>
-                                <option value="600">600 €</option>
-                                <option value="700">700 €</option>
-                                <option value="800">800 €</option>
-                                <option value="900">900 €</option>
-                                <option value="1000">1000 €</option>
-                                <option value="1001">1000+ €</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="type">Τύπος</label>
+                        <select id="type">
+                            <option value="">Όλοι οι τύποι</option>
+                            <option value="apartment">Διαμέρισμα</option>
+                            <option value="house">Οικογενειακή κατοικία</option>
+                            <option value="studio">Στούντιο</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price-min">Τιμή από (€)</label>
+                        <select id="price-min">
+                            <option value="">Ελάχιστη τιμή</option>
+                            <option value="200">200 €</option>
+                            <option value="300">300 €</option>
+                            <option value="400">400 €</option>
+                            <option value="500">500 €</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price-max">Τιμή έως (€)</label>
+                        <select id="price-max">
+                            <option value="">Μέγιστη τιμή</option>
+                            <option value="600">600 €</option>
+                            <option value="700">700 €</option>
+                            <option value="800">800 €</option>
+                            <option value="900">900 €</option>
+                            <option value="1000">1000+ €</option>
+                        </select>
                     </div>
                     <button type="submit" class="search-button">
                         <i class="fas fa-search"></i> Αναζήτηση
@@ -114,276 +106,214 @@
             </div>
         </div>
 
-        <section class="properties-section" aria-labelledby="properties-title">
+        <!-- Properties Section -->
+        <section class="properties-section fade-in delay-2">
             <div class="section-header">
-                <h2 id="properties-title">Διαθέσιμα Ακίνητα</h2>
+                <h2>Διαθέσιμα Ακίνητα</h2>
                 <p class="results-count">Βρέθηκαν <span id="properties-count">8</span> ακίνητα</p>
             </div>
             
             <div class="properties-grid" id="properties-container">
-                <!-- Properties will be loaded here by JavaScript -->
+                <!-- Property 1 -->
+                <div class="property-card">
+                    <div class="property-badge">Νέο</div>
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Διαμέρισμα στο Δημοτικό θέατρο">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Διαμέρισμα στο Δημοτικό θέατρο</h3>
+                        <div class="property-price">600 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Δημοτικό Θέατρο
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 65 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 2</span>
+                            <span><i class="fas fa-bath"></i> 1</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2006</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card">
+                    <div class="property-badge">Προσφορά</div>
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Διαμέρισμα στο Μικρολίμανο">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Διαμέρισμα στο Μικρολίμανο</h3>
+                        <div class="property-price">400 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Μικρολίμανο
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 45 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 1</span>
+                            <span><i class="fas fa-bath"></i> 1</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2002</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Διαμέρισμα στα Μανιάτικα">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Διαμέρισμα στα Μανιάτικα</h3>
+                        <div class="property-price">500 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Μανιάτικα
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 55 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 1</span>
+                            <span><i class="fas fa-bath"></i> 1</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2010</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
+                
+                <!-- Property 4 -->
+                <div class="property-card">
+                    <div class="property-badge">Νέο</div>
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Διαμέρισμα στο Δημοτικό θέατρο">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Διαμέρισμα στο Δημοτικό θέατρο</h3>
+                        <div class="property-price">700 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Δημοτικό Θέατρο
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 62 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 2</span>
+                            <span><i class="fas fa-bath"></i> 1</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2016</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
+                
+                <!-- Property 5 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Στούντιο στο Δημοτικό θέατρο">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Στούντιο στο Δημοτικό θέατρο</h3>
+                        <div class="property-price">360 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Δημοτικό Θέατρο
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 35 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 0</span>
+                            <span><i class="fas fa-bath"></i> 1</span>
+                            <span><i class="fas fa-calendar-alt"></i> 1997</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
+                
+                <!-- Property 6 -->
+                <div class="property-card">
+                    <div class="property-badge">Premium</div>
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Διαμέρισμα στο Δημοτικό θέατρο">
+                        <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="property-details">
+                        <h3>Διαμέρισμα στο Δημοτικό θέατρο</h3>
+                        <div class="property-price">900 €/μήνα</div>
+                        <div class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> Πειραιάς, Δημοτικό Θέατρο
+                        </div>
+                        <div class="property-features">
+                            <span><i class="fas fa-ruler-combined"></i> 75 τ.μ.</span>
+                            <span><i class="fas fa-bed"></i> 3</span>
+                            <span><i class="fas fa-bath"></i> 2</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2017</span>
+                        </div>
+                        <button class="view-details">Περισσότερες πληροφορίες</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
+    
     <!-- Footer -->
-    <footer class="main-footer" role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>MyHome</h3>
-                <p>Βρείτε το ιδανικό σας σπίτι με την βοήθεια των ειδικών μας.</p>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Prime Properties</h3>
+                    <p>Επαγγελματική μεσιτική ακινήτων στον Πειραιά και γύρω περιοχές. Βοηθάμε ανθρώπους να βρουν το σπίτι των ονείρων τους από το 2005.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Γρήγοροι Σύνδεσμοι</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html"><i class="fas fa-chevron-right"></i> Αρχική</a></li>
+                        <li><a href="properties.html"><i class="fas fa-chevron-right"></i> Ακίνητα</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> Σχετικά με εμάς</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Υπηρεσίες</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Επικοινωνία</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Επικοινωνία</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Karaoli ke Dimitriou 80, Pireas 185 34</p>
+                        <p><i class="fas fa-phone"></i> 6949363655</p>
+                        <p><i class="fas fa-envelope"></i> alexisptr204@gmail.com</p>
+                        <p><i class="fas fa-clock"></i> Δευ-Παρ: 9:00 - 17:00</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Ενημερωτικό Δελτίο</h3>
+                    <p>Εγγραφείτε για να λαμβάνετε ενημερώσεις για νέα ακίνητα και ειδικές προσφορές.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Το email σας" required>
+                        <button type="submit">Εγγραφή</button>
+                    </form>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Γρήγοροι Σύνδεσμοι</h3>
-                <ul>
-                    <li><a href="homepage.html">Αρχική</a></li>
-                    <li><a href="properties.html">Ακίνητα</a></li>
-                    <li><a href="about.html">Σχετικά με εμάς</a></li>
-                    <li><a href="contact.html">Επικοινωνία</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Prime Properties. Όλα τα δικαιώματα διατηρούνται. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Alexis</p>
             </div>
-            <div class="footer-section">
-                <h3>Επικοινωνία</h3>
-                <address>
-                    Karaoli ke Dimitriou 80<br>
-                    Pireas 185 34<br>
-                    <a href="tel:+306949363655">6949363655</a><br>
-                    <a href="mailto:alexisptr204@gmail.com">alexisptr204@gmail.com</a>
-                </address>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 MyHome. Όλα τα δικαιώματα διατηρούνται.</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Property data
-        const properties = [
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m3.spitogatos.gr/317741837_300x220.jpg?v=20130730",
-                price: "600",
-                size: 65,
-                year: 2006,
-                location: "dimitriou",
-                type: "apartment",
-                bedrooms: 2,
-                bathrooms: 1,
-                lat: 37.9450,
-                lng: 23.6430
-            },
-            { 
-                title: "Διαμέρισμα στο Μικρολίμανο",
-                image_link: "https://m1.spitogatos.gr/318635769_300x220.jpg?v=20130730",
-                price: "400",
-                size: 45,
-                year: 2002,
-                location: "mikrolimano",
-                type: "apartment",
-                bedrooms: 1,
-                bathrooms: 1,
-                lat: 37.9405,
-                lng: 23.6550
-            },
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m2.spitogatos.gr/311467849_300x220.jpg?v=20130730",
-                price: "700",
-                size: 62,
-                year: 2016,
-                location: "dimitriou",
-                type: "apartment",
-                bedrooms: 2,
-                bathrooms: 1,
-                lat: 37.9450,
-                lng: 23.6430
-            },
-            { 
-                title: "Διαμέρισμα στα Μανιάτικα",
-                image_link: "https://m1.spitogatos.gr/294492630_300x220.jpg?v=20130730",
-                price: "500",
-                size: 55,
-                year: 2010,
-                location: "maniatika",
-                type: "apartment",
-                bedrooms: 1,
-                bathrooms: 1,
-                lat: 37.9380,
-                lng: 23.6350
-            },
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m2.spitogatos.gr/317826253_900x675.jpg?v=20130730",
-                price: "360",
-                size: 35,
-                year: 1997,
-                location: "dimitriou",
-                type: "studio",
-                bedrooms: 0,
-                bathrooms: 1,
-                lat: 37.9450,
-                lng: 23.6430
-            },
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m3.spitogatos.gr/317821754_900x675.jpg?v=20130730",
-                price: "900",
-                size: 75,
-                year: 2017,
-                location: "dimitriou",
-                type: "apartment",
-                bedrooms: 3,
-                bathrooms: 2,
-                lat: 37.9450,
-                lng: 23.6430
-            },
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m2.spitogatos.gr/318495127_300x220.jpg?v=20130730",
-                price: "560",
-                size: 65,
-                year: 1997,
-                location: "dimitriou",
-                type: "apartment",
-                bedrooms: 2,
-                bathrooms: 1,
-                lat: 37.9450,
-                lng: 23.6430
-            },
-            { 
-                title: "Διαμέρισμα στο Δημοτικό θέατρο",
-                image_link: "https://m2.spitogatos.gr/317238883_300x220.jpg?v=20130730",
-                price: "1000",
-                size: 95,
-                year: 2017,
-                location: "dimitriou",
-                type: "apartment",
-                bedrooms: 3,
-                bathrooms: 2,
-                lat: 37.9450,
-                lng: 23.6430
-            }
-        ];
-
-        // Initialize Leaflet map
-        const map = L.map('property-map').setView([37.9420, 23.6462], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-        // Add markers to map
-        function addMarkers(propertiesToShow) {
-            // Clear existing markers
-            map.eachLayer(layer => {
-                if (layer instanceof L.Marker) {
-                    map.removeLayer(layer);
-                }
-            });
-
-            // Add new markers
-            propertiesToShow.forEach(property => {
-                L.marker([property.lat, property.lng])
-                    .addTo(map)
-                    .bindPopup(`<b>${property.title}</b><br>Τιμή: ${property.price}€`);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load properties
-            const container = document.getElementById('properties-container');
-            
-            function loadProperties(filteredProperties = properties) {
-                container.innerHTML = '';
-                document.getElementById('properties-count').textContent = filteredProperties.length;
-                
-                filteredProperties.forEach(property => {
-                    const card = document.createElement('article');
-                    card.className = 'property-card';
-                    card.innerHTML = `
-                        <div class="property-image">
-                            <img src="${property.image_link}" alt="${property.title}" loading="lazy">
-                            <span class="property-tag">${property.type === 'apartment' ? 'Διαμέρισμα' : 
-                              property.type === 'house' ? 'Οικία' : 'Στούντιο'}</span>
-                            <button class="favorite-button" aria-label="Προσθήκη στα αγαπημένα">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                        <div class="property-details">
-                            <h3>${property.title}</h3>
-                            <div class="property-price">${property.price} €</div>
-                            <div class="property-address">Πειραιάς</div>
-                            <div class="property-features">
-                                <span><i class="fas fa-ruler-combined"></i> ${property.size} τ.μ.</span>
-                                <span><i class="fas fa-bed"></i> ${property.bedrooms}</span>
-                                <span><i class="fas fa-bath"></i> ${property.bathrooms}</span>
-                                <span><i class="fas fa-calendar-alt"></i> ${property.year}</span>
-                            </div>
-                            <button class="view-details" onclick="viewDetails('${property.title}', '${property.image_link}', '${property.price}', ${property.size}, ${property.year})">
-                                Περισσότερες πληροφορίες
-                            </button>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
-
-                // Update map markers
-                addMarkers(filteredProperties);
-            }
-
-            // Initial load
-            loadProperties();
-
-            // Search form functionality
-            const searchForm = document.querySelector('.search-form');
-            searchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const location = document.getElementById('location').value;
-                const type = document.getElementById('type').value;
-                const priceMin = document.getElementById('price-min').value;
-                const priceMax = document.getElementById('price-max').value;
-                
-                const filtered = properties.filter(property => {
-                    return (!location || property.location === location) &&
-                           (!type || property.type === type) &&
-                           (!priceMin || parseInt(property.price) >= parseInt(priceMin)) &&
-                           (!priceMax || parseInt(property.price) <= parseInt(priceMax));
-                });
-                
-                loadProperties(filtered);
-            });
-
-            // Mobile menu toggle
-            const menuButton = document.querySelector('.mobile-menu-button');
-            const navLinks = document.querySelector('.nav-links');
-            
-            menuButton.addEventListener('click', function() {
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !expanded);
-                navLinks.style.display = expanded ? 'none' : 'flex';
-                this.querySelector('i').className = expanded ? 'fas fa-bars' : 'fas fa-times';
-            });
-        });
-
-        function viewDetails(title, image, price, size, year) {
-            const params = new URLSearchParams({
-                title: title,
-                image: image,
-                price: price,
-                size: size,
-                year: year
-            });
-            window.location.href = 'seedetails.html?' + params.toString();
-        }
-
-        document.addEventListener('click', function (e) {
-            if (e.target.classList.contains('favorite-button')) {
-                e.target.querySelector('i').classList.toggle('fas');
-                e.target.querySelector('i').classList.toggle('far');
-            }
-        });
-    </script>
+    <script src="../javascript/properties.js"></script>
 </body>
 </html>
